@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Implementation-Title: lichee :: support
+Implementation-Version: 1.0.0
+Implementation-Vendor-Id: org.lichee
+Build-Jdk: 1.7.0_40
+Built-By: Lynch
+Created-By: Maven Integration for Eclipse
+

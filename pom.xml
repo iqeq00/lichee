@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.lichee</groupId>
+	<artifactId>lichee</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+
+	<name>lichee :: project</name>
+	<url>http://www.lichee.org</url>
+	<description>This is a project demo of lynch</description>
+	<inceptionYear>2013-2014</inceptionYear>
+
+	<developers>
+		<developer>
+			<id>lynch</id>
+			<name>Lynch Yao</name>
+			<email>iqeq00@163.com</email>
+		</developer>
+	</developers>
+
+	<modules>
+		<module>parent</module>
+		<module>core</module>
+		<module>common</module>
+		<module>support</module>
+	</modules>
+	
+</project>
