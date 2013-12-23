@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
+        
+    <context:component-scan base-package="org.lichee.simple.example.col"/>    
+        
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+
+		<property name="webBindingInitializer">
+			<bean class="org.lichee.simple.example.web.mvc.BindingInitializer"/>
+		</property>
+		
+		 <property name="messageConverters">
+	    	<list>
+	    		<bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+	    			<property name="objectMapper">
+	    				<bean class="org.codehaus.jackson.map.ObjectMapper">
+	    					<property name="dateFormat">
+	    						<bean class="java.text.SimpleDateFormat">
+	    							<constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss"/>
+	    						</bean>
+	    					</property>
+	    				</bean>
+	    			</property>
+	    		</bean>
+	    	</list>
+	    </property>
+		
+	</bean>
+	
+	<bean id="jspResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/test/**" />
+			<mvc:mapping path="/testurl/**" />
+			<bean class="org.lichee.simple.example.interceptor.TestInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	<mvc:default-servlet-handler/>  
+	
+</beans>

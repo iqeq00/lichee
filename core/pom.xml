@@ -90,8 +90,8 @@
 			<artifactId>spring-webmvc</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
+		    <groupId>javaee</groupId>
+		    <artifactId>javaee-api</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>

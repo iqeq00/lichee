@@ -1,0 +1,35 @@
+[{
+	"text":"功能主菜单",
+	"children":[{
+		"text":"权限管理",
+		"children":[{
+			"text":"资源管理",
+			"attributes":{
+				"src":"../resource/resourceList"
+			}
+		},{
+			"text":"权限管理",
+			"attributes":{
+				"src":"../authority/authorityList"
+			}
+		}]
+	},
+	{
+		"text":"广告管理",
+		"state":"closed",
+		"children":[{
+			"text":"广告版位管理"
+		},{
+			"text":"内容管理"
+		}]
+	},
+	{
+		"text":"测试管理",
+		"children":[{
+			"text":"测试用例",
+			"attributes":{
+				"src":"../test/testListJsp"
+			}
+		}]
+	}]
+}]
