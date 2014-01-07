@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping(value = "/test")
-public class TestCol {
+@RequestMapping(value = "/testjson")
+public class TestJsonCol {
 
 	private TestSev testSev;
 	

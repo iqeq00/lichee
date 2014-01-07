@@ -28,7 +28,7 @@ public class TestUrlCol {
 	@RequestMapping(method = RequestMethod.GET)
 	public String list(
 		@RequestParam(value = "page", defaultValue = "1") int pageNumber,
-		@RequestParam(value = "pager.size", defaultValue = "1") int pageSize,
+		@RequestParam(value = "pager.size", defaultValue = "10") int pageSize,
 		Model model) {
 
 		Page<Test> tests = testSev.getTestList(pageNumber, pageSize, "");

@@ -12,7 +12,7 @@
 	
 		$(function() {
 			$('#testDatagrid').datagrid({
-				url : '../test/testList',
+				url : '../testjson/testList',
 				fit : true,
 				fitColumns : true,
 				border : false,
@@ -64,10 +64,10 @@
 				},
 				onLoadSuccess:function(data){
 	    			//var pset = "1,2,3";
-	    			var grid = $('#testDatagrid');
-	    			grid.datagrid('selectRow', 1);
-	    			grid.datagrid('selectRow', 2);
-	    			grid.datagrid('selectRow', 3);
+	    			//var grid = $('#testDatagrid');
+	    			//grid.datagrid('selectRow', 1);
+	    			//grid.datagrid('selectRow', 2);
+	    			//grid.datagrid('selectRow', 3);
 					//$.each(pset,function(idx,v){
 						//var index = grid.datagrid('getRowIndex', v);
 						//console.log(index);
