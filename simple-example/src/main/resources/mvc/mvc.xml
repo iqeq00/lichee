@@ -47,7 +47,7 @@
 		</property>  
     </bean>
 	
-	<!-- 
+	<!-- 拦截器实现
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/test/**" />

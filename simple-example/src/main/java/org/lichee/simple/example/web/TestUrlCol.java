@@ -27,26 +27,26 @@ public class TestUrlCol {
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public String list(
-			@RequestParam(value = "page", defaultValue = "1") int pageNumber,
-			@RequestParam(value = "pager.size", defaultValue = "10") int pageSize,
-			Model model) {
+		@RequestParam(value = "page", defaultValue = "1") int pageNumber,
+		@RequestParam(value = "pager.size", defaultValue = "1") int pageSize,
+		Model model) {
 
 		Page<Test> tests = testSev.getTestList(pageNumber, pageSize, "");
 		model.addAttribute("tests", tests);
 		return "testurl/testList";
 	}
 
-	 /**
-	  * 添加页面
-	  */
-	 @RequestMapping(value = "create", method = RequestMethod.GET)
-	 public String createForm(Model model) {
-	
-		 model.addAttribute("test", new Test());
-		 model.addAttribute("action", "create");
-		 return "testurl/testForm";
-	 }
-	 
+	/**
+	 * 添加页面
+	 */
+	@RequestMapping(value = "create", method = RequestMethod.GET)
+	public String createForm(Model model) {
+
+		model.addAttribute("test", new Test());
+		model.addAttribute("action", "create");
+		return "testurl/testForm";
+	}
+
 	/**
 	 * 添加
 	 */
@@ -57,40 +57,44 @@ public class TestUrlCol {
 		redirectAttributes.addFlashAttribute("message", "创建测试成功");
 		return "redirect:/testurl/";
 	}
-	
-	 /**
-	  * 详情
-	  */
+
+	/**
+	 * 详情
+	 */
 	@RequestMapping(value = "update/{testId}", method = RequestMethod.GET)
 	public String updateForm(@PathVariable("testId") Integer testId, Model model) {
 		model.addAttribute("test", testSev.getTest(testId));
 		model.addAttribute("action", "update");
 		return "testurl/testForm";
 	}
-	
-	 /**
-	  * 修改
-	  */
+
+	/**
+	 * 修改
+	 */
 	@RequestMapping(value = "update", method = RequestMethod.POST)
-	public String update(@Valid @ModelAttribute("test") Test test, RedirectAttributes redirectAttributes) {
+	public String update(@Valid @ModelAttribute("test") Test test,
+			RedirectAttributes redirectAttributes) {
 		testSev.saveTest(test);
 		redirectAttributes.addFlashAttribute("message", "更新测试成功");
 		return "redirect:/testurl/";
 	}
-	
+
 	/**
 	 * 删除
 	 */
 	@RequestMapping(value = "delete/{testId}")
-	public String delete(@PathVariable("testId") Integer testId, RedirectAttributes redirectAttributes) {
+	public String delete(@PathVariable("testId") Integer testId,
+			RedirectAttributes redirectAttributes) {
 		testSev.deleteTest(testId);
 		redirectAttributes.addFlashAttribute("message", "删除任务成功");
 		return "redirect:/testurl/";
 	}
-	
+
 	@ModelAttribute
-	public void getTest(@RequestParam(value = "testId", defaultValue = "-1") Integer testId, Model model) {
-		
+	public void getTest(
+		@RequestParam(value = "testId", defaultValue = "-1") Integer testId,
+		Model model) {
+
 		if (testId != -1) {
 			model.addAttribute("test", testSev.getTest(testId));
 		}
