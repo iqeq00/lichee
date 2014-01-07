@@ -26,6 +26,7 @@
 	<!-- 使用annotation 自动注册bean,并检查@Required,@Autowired的属性已被注入 -->
 	<context:component-scan base-package="org.lichee.simple.example">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
 	</context:component-scan>
 	
 	<!-- Jpa Entity Manager 配置 -->
@@ -54,7 +55,7 @@
 	<bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
 
 	<!-- Spring Data Jpa配置, 扫描base-package下所有继承于Repository<T,ID>的接口 -->
- 	<jpa:repositories base-package="org.lichee.simple.example.dao" transaction-manager-ref="transactionManager" entity-manager-factory-ref="entityManagerFactory"/>
+ 	<jpa:repositories base-package="org.lichee.simple.example.repository" transaction-manager-ref="transactionManager" entity-manager-factory-ref="entityManagerFactory"/>
 	
 	<!-- 事务管理器配置, Jpa单数据源事务 -->
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">

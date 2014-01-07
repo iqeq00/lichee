@@ -10,6 +10,6 @@
 <body>
 	欢迎大家来到这里..<br/>
 	<a href="${ctx}/home/main">easyui演示页面</a><br/><br/>
-	<a href="${ctx}/testurl/testList">一般演示页面</a><br/><br/>
+	<a href="${ctx}/testurl">一般演示页面</a><br/><br/>
 </body>
 </html>
