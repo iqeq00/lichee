@@ -22,7 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  */
 @Controller
 @RequestMapping(value = "/sitemesh/task")
-public class TaskCol {
+public class BsTaskCol {
 
 	@Autowired
 	private TaskSev taskSev;
@@ -33,7 +33,7 @@ public class TaskCol {
 	@RequestMapping(method = RequestMethod.GET)
 	public String list(
 			@RequestParam(value = "page", defaultValue = "1") int pageNumber,
-			@RequestParam(value = "pager.size", defaultValue = "1") int pageSize,
+			@RequestParam(value = "pager.size", defaultValue = "10") int pageSize,
 			Model model) {
 
 		Page<Task> tasks = taskSev.list(pageNumber, pageSize, "");
@@ -60,7 +60,7 @@ public class TaskCol {
 
 		taskSev.save(task);
 		redirectAttributes.addFlashAttribute("message", "创建任务成功");
-		return "redirect:/task/";
+		return "redirect:/sitemesh/task/";
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class TaskCol {
 			RedirectAttributes redirectAttributes) {
 		taskSev.save(task);
 		redirectAttributes.addFlashAttribute("message", "更新任务成功");
-		return "redirect:/task/";
+		return "redirect:/sitemesh/task/";
 	}
 
 	/**
@@ -92,16 +92,16 @@ public class TaskCol {
 			RedirectAttributes redirectAttributes) {
 		taskSev.delete(id);
 		redirectAttributes.addFlashAttribute("message", "删除任务成功");
-		return "redirect:/task/";
+		return "redirect:/sitemesh/task/";
 	}
 
 	@ModelAttribute
 	public void get(
-			@RequestParam(value = "id", defaultValue = "-1") Integer id,
+			@RequestParam(value = "taskId", defaultValue = "-1") Integer taskId,
 			Model model) {
 
-		if (id != -1) {
-			model.addAttribute("task", taskSev.get(id));
+		if (taskId != -1) {
+			model.addAttribute("task", taskSev.get(taskId));
 		}
 	}
 

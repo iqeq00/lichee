@@ -2,8 +2,7 @@
 <decorators defaultdir="/WEB-INF/layouts/sitemesh/">
 	<excludes>
 		<pattern>/common/*</pattern>
-		<pattern>/home/*</pattern>
-		<pattern>/testjson/*</pattern>
+		<pattern>/easyui/*</pattern>
 	</excludes>
 	<decorator name="default" page="default.jsp">
 		<pattern>/*</pattern>

@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Lynch
  */
 @Controller
-@RequestMapping(value = "/home")
+@RequestMapping(value = "/easyui")
 public class HomeCol {
 
 	@RequestMapping(value = "/main")
 	public String main() {
 
-		return "home/main";
+		return "easyui/home/main";
 	}
 
 }

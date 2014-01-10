@@ -5,21 +5,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>测试列表</title>
-	<jsp:include page="../../../layouts/easyui/meta.jsp" />
+	<title>任务列表</title>
 	<jsp:include page="../../../layouts/easyui/linkScript.jsp" />
 	<script type="text/javascript">
 	
 		$(function() {
-			$('#testDatagrid').datagrid({
-				url : '../testjson/testList',
+			$('#datagrid').datagrid({
+				url : "${ctx}/easyui/task",
 				fit : true,
 				fitColumns : true,
 				border : false,
 				pagination : true,
 				rownumbers:true, 
-				idField : 'testId',
-				sortName : 'testId',
+				idField : 'taskId',
+				sortName : 'taskId',
 				sortOrder : 'desc',
 				striped: true, 		
 				checkOnSelect : false,
@@ -27,20 +26,20 @@
 				loadMsg:'正在加载，请稍后...',
 				nowrap : false,
 				frozenColumns : [ [ {
-					title : '测试Id',
-					field : 'testId',
+					title : '任务Id',
+					field : 'taskId',
 					width : 150,
 					sortable : true,
 					checkbox : true
 				} ]],
 				columns : [ [ {
-					title : '测试名称',
-					field : 'testName',
+					title : '任务名称',
+					field : 'taskName',
 					width : 150,
 					sortable : true
 				},	{
-					title : '测试描述',
-					field : 'testDesc',
+					title : '任务描述',
+					field : 'taskDesc',
 					width : 150,
 					sortable : true
 				},  {
@@ -48,24 +47,24 @@
 					title : '操作',
 					width : 100,
 					formatter : function(value, row, index) { 
-						return "<img onclick='testInfo("+row.testId+");' src='../common/images/pencil.png'/>"+"&nbsp;<img onclick='testDelete("+row.testId+");' src='../common/images/cancel.png'/>";
+						return "<img onclick='update("+row.taskId+");' src='../common/images/pencil.png'/>"+"&nbsp;<img onclick='taskDelete("+row.taskId+");' src='../common/images/cancel.png'/>";
 					}
 				}] ],
 				toolbar : [ {
-					text : '测试添加',
+					text : '任务添加',
 					iconCls : 'icon-add',
 					handler : function() {
-						testAdd();
+						create();
 					}
 				}, '-', {
 					text : '批量删除',
 					iconCls : 'icon-remove',
 					handler : function() {
-						testDeleteAll();
+						deleteAll();
 					}
 				}],
 				onDblClickRow : function(index, row){
-					testInfo(row.testId);
+					update(row.taskId);
 				},
 				onLoadSuccess:function(data){
 	    			//var pset = "1,2,3";
@@ -83,28 +82,28 @@
 		});
 		
 		//新增  
-		function testAdd(){  
+		function create(){  
 			
-			$('#testDatagrid').datagrid('uncheckAll').datagrid('unselectAll').datagrid('clearSelections');
+			$('#datagrid').datagrid('uncheckAll').datagrid('unselectAll').datagrid('clearSelections');
 			$('<div/>').dialog({
-				href : '../testjson/testAddJsp',
+				href : '${ctx}/easyui/task/create',
 				width : 300,
 				height : 180,
 				modal : true,
-				title : '测试添加',
+				title : '任务添加',
 				buttons : [ {
 					text : '添加',
 					iconCls : 'icon-add',
 					handler : function() {
 						var d = $(this).closest('.window-body');
-						$('#testAddForm').form('submit', {
-							url : '../testjson/testAdd',
+						$('#inputForm').form('submit', {
+							url : '${ctx}/easyui/task/create',
 							success : function(result) {
 								try {
 									var result = $.parseJSON(result);
 									if (result.success) {
-										$('#testDatagrid').datagrid('reload');
-										$('#testDatagrid').datagrid('uncheckAll').datagrid('unselectAll').datagrid('clearSelections');
+										$('#datagrid').datagrid('reload');
+										$('#datagrid').datagrid('uncheckAll').datagrid('unselectAll').datagrid('clearSelections');
 										d.dialog('destroy');
 									}
 									$.messager.show({
@@ -125,28 +124,28 @@
 		}  
 		
 		//修改
-		function testInfo(testId) {
+		function update(id) {
 			
-			$('#testDatagrid').datagrid('uncheckAll').datagrid('unselectAll').datagrid('clearSelections');
+			$('#datagrid').datagrid('uncheckAll').datagrid('unselectAll').datagrid('clearSelections');
 			$('<div/>').dialog({
-				href : '../testjson/testInfoJsp',
+				href : '${ctx}/easyui/task/update',
 				width : 300,
 				height : 180,
 				modal : true,
-				title : '测试修改',
+				title : '任务修改',
 				buttons : [ {
 					text : '修改',
 					iconCls : 'icon-edit',
 					handler : function() {
 						var d = $(this).closest('.window-body');
-						$('#testUpdateForm').form('submit', {
-							url : '../testjson/testUpdate',
+						$('#inputForm').form('submit', {
+							url : '${ctx}/easyui/task/update',
 							success : function(result) {
 								try {
 									var result = $.parseJSON(result);
 									if (result.success) {
-										$('#testDatagrid').datagrid('updateRow', {
-											index : $('#testDatagrid').datagrid('getRowIndex', testId),
+										$('#datagrid').datagrid('updateRow', {
+											index : $('#datagrid').datagrid('getRowIndex', id),
 											row : result.obj
 										});
 										d.dialog('destroy');
@@ -166,39 +165,39 @@
 					$(this).dialog('destroy');
 				},
 				onLoad : function() {
-					var index = $('#testDatagrid').datagrid('getRowIndex', testId);
-					var rows = $('#testDatagrid').datagrid('getRows');
+					var index = $('#datagrid').datagrid('getRowIndex', id);
+					var rows = $('#datagrid').datagrid('getRows');
 					var o = rows[index];
-					$('#testUpdateForm').form('load', o);
+					$('#inputForm').form('load', o);
 				}
 			});
 		}
 		
 		//删除
-		function testDelete(testId) {
+		function taskDelete(id) {
 
-			$('#testDatagrid').datagrid('uncheckAll').datagrid('unselectAll').datagrid('clearSelections');
-			$('#testDatagrid').datagrid('checkRow',$('#testDatagrid').datagrid('getRowIndex', testId));
-			testDeleteAll();
+			$('#datagrid').datagrid('uncheckAll').datagrid('unselectAll').datagrid('clearSelections');
+			$('#datagrid').datagrid('checkRow',$('#datagrid').datagrid('getRowIndex', id));
+			deleteAll();
 		}
 
-		function testDeleteAll() {
+		function deleteAll() {
 
-			var rows = $('#testDatagrid').datagrid('getChecked');
+			var rows = $('#datagrid').datagrid('getChecked');
 			var params = "";
 			if (rows.length > 0) {
 				$.messager.confirm('确认', '您是否要删除当前选中的项目？', function(r) {
 					if (r) {
-						$.each(rows, function(i, test) {
-							params += test.testId + ",";
+						$.each(rows, function(i, task) {
+							params += task.taskId + ",";
 						});
 						$.ajax({
-							url : '../test/testDelete/' + params,
+							url : '${ctx}/easyui/task/delete/' + params,
 							dataType : 'json',
 							success : function(result) {
 								if (result.success) {
-									$('#testDatagrid').datagrid('reload');
-									$('#testDatagrid').datagrid('uncheckAll').datagrid('unselectAll').datagrid('clearSelections');
+									$('#datagrid').datagrid('reload');
+									$('#datagrid').datagrid('uncheckAll').datagrid('unselectAll').datagrid('clearSelections');
 								}
 								$.messager.show({
 									title : '提示',
@@ -220,7 +219,7 @@
 
 <body>
 
-	<table id="testDatagrid"></table>
+	<table id="datagrid"></table>
 	
 </body>
 

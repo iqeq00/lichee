@@ -28,7 +28,7 @@
 		"children":[{
 			"text":"测试用例",
 			"attributes":{
-				"src":"../testjson/testListJsp"
+				"src":"task"
 			}
 		}]
 	}]

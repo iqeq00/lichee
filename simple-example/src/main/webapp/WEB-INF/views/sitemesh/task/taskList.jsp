@@ -21,8 +21,8 @@
 					<td>${task.taskName}</td>
 					<td>${task.taskDesc}</td>
 					<td>
-						<a href="${ctx}/task/update/${task.taskId}">修改</a>&nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;
-						<a href="${ctx}/task/delete/${task.taskId}">删除</a><br/>
+						<a href="${ctx}/sitemesh/task/update/${task.taskId}">修改</a>&nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;
+						<a href="${ctx}/sitemesh/task/delete/${task.taskId}">删除</a><br/>
 					</td>
 				</tr>
 			</c:forEach>
@@ -31,7 +31,7 @@
 	
 	<div>
 		<span style="float:left;">
-			<a class="btn" href="${ctx}/task/create">添加</a>
+			<a class="btn" href="${ctx}/sitemesh/task/create">添加</a>
 		</span> 
 		<span style="float:right;">
 			<tags:pagination page="${tasks}" paginationSize="5"/>

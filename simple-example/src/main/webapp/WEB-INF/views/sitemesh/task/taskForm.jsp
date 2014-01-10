@@ -15,7 +15,7 @@
 </head>
 <body>
 	
-	<form id="inputForm" action="${ctx}/task/${action}" method="post" class="form-horizontal">
+	<form id="inputForm" action="${ctx}/sitemesh/task/${action}" method="post" class="form-horizontal">
 		<input type="hidden" name="taskId" value="${task.taskId}"/>
 		<fieldset>
 			<legend><small>测试修改</small></legend>
