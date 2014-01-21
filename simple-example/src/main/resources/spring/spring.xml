@@ -36,9 +36,9 @@
 		<property name="packagesToScan" value="org.lichee.simple.example"/>
 		
 		<!-- 
-		<property name="persistenceUnitName" value="defaultPU"/>
-		<property name="persistenceXmlLocation" value="classpath*:META-INF/persistence.xml" />
-		<property name="persistenceProvider" ref="persistenceProvider"/>
+			用自动扫描来替换掉jpa的文件
+			<property name="persistenceUnitName" value="defaultPU"/>
+			<property name="persistenceXmlLocation" value="classpath*:META-INF/persistence.xml" />
 		 -->
 		
 		<property name="jpaProperties">
@@ -51,9 +51,7 @@
 			</props>
 		</property>
 	</bean>
-	<!-- 
-	<bean id="persistenceProvider" class="org.hibernate.ejb.HibernatePersistence"/>
-	 -->
+	
 	<bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
 
 	<!-- Spring Data Jpa配置, 扫描base-package下所有继承于Repository<T,ID>的接口 -->

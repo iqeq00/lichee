@@ -232,7 +232,15 @@
 	    <dependency>
 		    <groupId>com.octo.captcha</groupId>
 		    <artifactId>jcaptcha</artifactId>
-		</dependency>  		
+		</dependency>  
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-ehcache</artifactId>
+		</dependency>
 	</dependencies>
 	
 	<build>

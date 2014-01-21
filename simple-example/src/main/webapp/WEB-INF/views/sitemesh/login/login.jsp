@@ -1,38 +1,36 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
-   
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>任务表单</title>
+	<title>登录</title>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$("#taskName").focus();
+			$("#username").focus();
 			$("#inputForm").validation();
 		});
 	</script>
 </head>
+
 <body>
-	
-	<form id="inputForm" action="${ctx}/sitemesh/task/${action}" method="post" class="form-horizontal">
-		<input type="hidden" name="taskId" value="${task.taskId}"/>
+
+	<form id="inputForm" action="${ctx}/sitemesh/login" method="post" class="form-horizontal">
 		<fieldset>
-			<legend><small>任务修改</small></legend>
+			<legend><small>用户登录</small></legend>
 			<div class="control-group">
-				<label for="task_name" class="control-label">任务名称:</label>
+				<label for="user_name" class="control-label">用户名称:</label>
 				<div class="controls">
-					<input type="text" id="taskName" name="taskName" value="${task.taskName}" class="input-large"
-						check-type="required" required-message="请填写任务名称信息"/>
+					<input type="text" id="username" name="username" class="input-large"
+						check-type="required" required-message="请填写用户名称"/>
 				</div>
 			</div>
 			<div class="control-group">
-				<label for="task_desc" class="control-label">任务描述:</label>
+				<label for="user_password" class="control-label">用户密码:</label>
 				<div class="controls">
-					<div class="textarea">
-						<textarea name="taskDesc" class="input-large" style="width:210px;height:150px;" 
-							check-type="required" required-message="请填写任务描述信息" />${task.taskDesc}</textarea>
-					</div>
+					<input type="password" id="password" name="password" class="input-large"
+						check-type="required" required-message="请填写用户密码"/>
 				</div>
 			</div>
 			<div class="form-actions">
@@ -41,6 +39,6 @@
 			</div>
 		</fieldset>
 	</form>
-	
+
 </body>
 </html>

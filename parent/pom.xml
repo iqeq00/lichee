@@ -26,6 +26,7 @@
 		<slf4j.version>1.7.5</slf4j.version>
 		<logback.version>1.0.13</logback.version>
 		<dozer.version>5.4.0</dozer.version>
+		<shiro.version>1.2.2</shiro.version>
 		
 		<spring.security.version>3.1.4.RELEASE</spring.security.version>
 		<jdk.version>1.6</jdk.version>
@@ -382,6 +383,19 @@
 			</dependency>
 			<!-- jcaptcha -->
 			
+			<!-- apache shiro -->
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-spring</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-ehcache</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+			<!-- apache shiro -->
+			
 			
 			
 			<!-- poi -->
@@ -405,7 +419,7 @@
 			    <artifactId>htmlparser</artifactId>
 			    <version>2.1</version>
 			</dependency>
-			       
+			
 		</dependencies>
 	</dependencyManagement>
 	
