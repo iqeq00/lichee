@@ -17,7 +17,7 @@
 	</appender>
 
 	<!-- project default level -->
-	<logger name="org.springside.examples.quickstart" level="INFO" />
+	<logger name="org.lichee.simple.example" level="INFO" />
 
 	<!--log4jdbc -->
 	<logger name="jdbc.sqltiming" level="INFO"/>
