@@ -17,11 +17,12 @@
 	<!-- Shiro Filter -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" />
-		<property name="loginUrl" value="/sitemesh/login" />
+		<property name="loginUrl" value="/bootstrap/login" />
 		<property name="successUrl" value="/" />
 		<property name="filterChainDefinitions">
 			<value>
 				/login = anon
+				/logout = logout
 				/common/** = anon
             	/** = authc
 			</value>

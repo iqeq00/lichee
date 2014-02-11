@@ -42,7 +42,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
                     if (sur.getRole().getRolePermissions() != null && sur.getRole().getRolePermissions().size() > 0) {
                         for (SeRolePermission srp : sur.getRole().getRolePermissions()) {
 //                            if(!StringUtils.isEmpty(pmss.getPermission())){
-                                permissions.add(srp.getPermission().getPermissionUrl());
+                        		permissions.add(srp.getPermission().getPermissionUrl());
 //                            }
                         }
                     }
@@ -63,7 +63,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
 	 */
 	protected AuthenticationInfo doGetAuthenticationInfo(
 			AuthenticationToken authcToken) throws AuthenticationException {
-		System.out.println("db里面---------------------到底哪个先进来的？-----------------------");
+		System.out.println("db里面---------------------登录调用-----------------------");
 		UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
 		SeUser user = userDao.getByUserName(token.getUsername());
 		if (user != null) {
