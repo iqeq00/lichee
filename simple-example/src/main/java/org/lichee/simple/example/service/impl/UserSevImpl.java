@@ -1,22 +1,11 @@
 package org.lichee.simple.example.service.impl;
 
-import java.util.List;
+import java.util.Date;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Expression;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-
-import org.lichee.simple.example.entity.Task;
+import org.lichee.simple.example.entity.SeUser;
 import org.lichee.simple.example.repository.UserDao;
 import org.lichee.simple.example.service.UserSev;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 /**
@@ -29,6 +18,23 @@ public class UserSevImpl implements UserSev {
 
 	@Autowired
 	private UserDao userDao;
+
+	/**
+	 * 用户注册
+	 */
+	public void registerUser(SeUser user) {
+		
+		user.setUserCreateTime(new Date());
+		userDao.save(user);
+	}
+
+	/**
+	 * 查询用户名唯一
+	 */
+	public SeUser findUserByUserName(String userName) {
+		
+		return userDao.findUserByUserName(userName);
+	}
 
 //	/**
 //	 * 列表

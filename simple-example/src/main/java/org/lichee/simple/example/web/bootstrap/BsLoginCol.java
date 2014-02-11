@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * 登录
+ * 
+ * @author Lynch
+ */
 @Controller
 @RequestMapping(value = "/bootstrap/login")
 public class BsLoginCol {

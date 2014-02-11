@@ -15,6 +15,13 @@ public interface UserDao extends JpaRepository<SeUser, Integer>,
 	 * 根据一个测试的id来查询
 	 */
 	SeUser getByUserName(String userName);
+	
+	/**
+	 * 查询用户名唯一
+	 */
+	SeUser findUserByUserName(String userName);
+	
+	
 	//
 	// /**
 	// * 根据一个测试的id来查询
@@ -27,4 +34,6 @@ public interface UserDao extends JpaRepository<SeUser, Integer>,
 	// */
 	// @Query("FROM Test ")
 	// List<Test> getList();
+
+	
 }

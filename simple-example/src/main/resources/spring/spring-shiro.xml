@@ -22,9 +22,11 @@
 		<property name="filterChainDefinitions">
 			<value>
 				/login = anon
-				/logout = logout
 				/common/** = anon
-            	/** = authc
+				/register/** = anon
+				/logout = logout
+				/admin/** = roles[admin]
+            	/** = user
 			</value>
 		</property>
 	</bean>

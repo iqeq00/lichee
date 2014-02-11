@@ -1,15 +1,23 @@
 package org.lichee.simple.example.service;
 
-import org.lichee.simple.example.entity.Task;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.lichee.simple.example.entity.SeUser;
 
 /**
- * task 服务层 inf
+ * user 服务层 inf
  * 
  * @author lynch
  */
 public interface UserSev {
+
+	/**
+	 * 用户注册
+	 */
+	void registerUser(SeUser user);
+
+	/**
+	 * 查询用户名唯一
+	 */
+	SeUser findUserByUserName(String userName);
 
 //	/**
 //	 * 列表
