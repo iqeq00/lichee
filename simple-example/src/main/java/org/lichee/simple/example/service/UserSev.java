@@ -17,31 +17,7 @@ public interface UserSev {
 	/**
 	 * 查询用户名唯一
 	 */
-	SeUser findUserByUserName(String userName);
+	SeUser getByUserName(String userName);
 
-//	/**
-//	 * 列表
-//	 */
-//	Page<Task> list(Pageable pageable);
-//
-//	/**
-//	 * 列表
-//	 */
-//	Page<Task> list(int pageNumber, int pageSize, String name);
-//
-//	/**
-//	 * 保存
-//	 */
-//	void save(Task task);
-//
-//	/**
-//	 * 查询
-//	 */
-//	Task get(Integer id);
-//
-//	/**
-//	 * 删除
-//	 */
-//	void delete(Integer id);
 
 }

@@ -31,9 +31,9 @@ public class UserSevImpl implements UserSev {
 	/**
 	 * 查询用户名唯一
 	 */
-	public SeUser findUserByUserName(String userName) {
+	public SeUser getByUserName(String userName) {
 		
-		return userDao.findUserByUserName(userName);
+		return userDao.getByUserName(userName);
 	}
 
 //	/**

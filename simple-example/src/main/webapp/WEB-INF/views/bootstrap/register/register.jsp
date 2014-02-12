@@ -33,19 +33,19 @@
 		<fieldset>
 			<legend><small>用户注册</small></legend>
 			<div class="control-group">
-				<label for="loginName" class="control-label">登录名:</label>
+				<label for="userName" class="control-label">登录名:</label>
 				<div class="controls">
 					<input type="text" id="userName" name="userName" class="input-large required" minlength="3"/>
 				</div>
 			</div>
 			<div class="control-group">
-				<label for="name" class="control-label">昵称:</label>
+				<label for="userAccount" class="control-label">昵称:</label>
 				<div class="controls">
 					<input type="text" id="userAccount" name="userAccount" class="input-large required"/>
 				</div>
 			</div>
 			<div class="control-group">
-				<label for="plainPassword" class="control-label">密码:</label>
+				<label for="userPassword" class="control-label">密码:</label>
 				<div class="controls">
 					<input type="password" id="userPassword" name="userPassword" class="input-large required"/>
 				</div>

@@ -17,6 +17,8 @@
 <script type="text/javascript" src="${ctx}/common/script/jquery/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="${ctx}/common/script/bootstrap/2.3.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${ctx}/common/script/jquery/bootstrap-validation.js"></script>
+<script type="text/javascript" src="${ctx}/common/script/jquery-validation/1.11.1/jquery.validate.min.js"></script>
+<script type="text/javascript" src="${ctx}/common/script/jquery-validation/1.11.1/messages_bs_zh.js"></script>
 <sitemesh:head/>
 
 </head>

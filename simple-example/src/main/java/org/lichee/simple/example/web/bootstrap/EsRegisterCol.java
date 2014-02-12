@@ -42,7 +42,7 @@ public class EsRegisterCol {
 		
 		userSev.registerUser(user);
 		redirectAttributes.addFlashAttribute("username", user.getUserName());
-		return "redirect:/bootstrap/login/login";
+		return "redirect:/bootstrap/login";
 	}
 
 	/**
@@ -52,9 +52,12 @@ public class EsRegisterCol {
 	@ResponseBody
 	public String checkUserName(@RequestParam("userName") String userName) {
 		
-		if (userSev.findUserByUserName(userName) == null) {
+		System.out.println("用户名==="+userName);
+		if (userSev.getByUserName(userName) == null) {
+			System.out.println("没有此用户名");
 			return "true";
 		} else {
+			System.out.println("有此用户名");
 			return "false";
 		}
 	}

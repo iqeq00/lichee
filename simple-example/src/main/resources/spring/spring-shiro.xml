@@ -21,12 +21,10 @@
 		<property name="successUrl" value="/" />
 		<property name="filterChainDefinitions">
 			<value>
-				/login = anon
+				/**/register/** = anon
 				/common/** = anon
-				/register/** = anon
 				/logout = logout
-				/admin/** = roles[admin]
-            	/** = user
+            	/** = authc
 			</value>
 		</property>
 	</bean>
@@ -35,4 +33,5 @@
 	<!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
 	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
 	
+	<!-- 待完善的功能 ，缓存处理、动态filterChainDefinitions -->
 </beans>
