@@ -24,12 +24,17 @@ public class ShiroDbRealm extends AuthorizingRealm {
 	@Autowired
 	private UserDao userDao;
 
+	/**
+	 * 授权信息
+	 */
 	protected AuthorizationInfo doGetAuthorizationInfo(
 			PrincipalCollection principals) {
 		
+		System.out.println("进入授权的过程...");
 		 SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         //获取当前登录的用户名
         String account = (String) super.getAvailablePrincipal(principals);
+        System.out.println("系统登录的用户名："+account);
         
         List<String> roles = new ArrayList<String>();  
         List<String> permissions = new ArrayList<String>();
