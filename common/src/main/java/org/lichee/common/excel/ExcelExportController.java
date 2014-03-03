@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.google.common.collect.Maps;
 
 /**
- * 基于POI导出Excel文件的Controller.
+ * 基于POI导出Excel文件的Controller.(没有完成的)
  * 
  * @author calvin
  */
@@ -42,9 +42,9 @@ public class ExcelExportController {
 		//生成Excel文件.
 		Workbook wb = exportExcelWorkbook();
 
-		//输出Excel文件.
-		response.setContentType(Servlets.EXCEL_TYPE);
-		Servlets.setFileDownloadHeader(request, response, "温度年表.xls");
+		//输出Excel文件.      ************这里被注释掉，是和以前版本的未整合***************
+//		response.setContentType(Servlets.EXCEL_TYPE);
+//		Servlets.setFileDownloadHeader(request, response, "温度年表.xls");
 
 		wb.write(response.getOutputStream());
 		response.getOutputStream().flush();

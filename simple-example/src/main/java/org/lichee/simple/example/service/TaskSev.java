@@ -1,5 +1,7 @@
 package org.lichee.simple.example.service;
 
+import java.util.Map;
+
 import org.lichee.simple.example.entity.Task;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,11 +17,17 @@ public interface TaskSev {
 	 * 列表
 	 */
 	Page<Task> list(Pageable pageable);
-
+	
 	/**
 	 * 列表
 	 */
 	Page<Task> list(int pageNumber, int pageSize, String name);
+	
+	/**
+	 * 列表
+	 */
+	Page<Task> list(int pageNumber, int pageSize,
+			Map<String, Object> searchParams, String sortType);
 
 	/**
 	 * 保存

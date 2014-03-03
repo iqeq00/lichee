@@ -1,7 +1,11 @@
 package org.lichee.simple.example.web.bootstrap;
 
+import java.util.Map;
+
+import javax.servlet.ServletRequest;
 import javax.validation.Valid;
 
+import org.lichee.core.web.util.Servlets;
 import org.lichee.simple.example.entity.Task;
 import org.lichee.simple.example.service.TaskSev;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.google.common.collect.Maps;
+
 /**
  * bootstarp风格的rest范例
  * 
@@ -26,6 +32,12 @@ public class BsTaskCol {
 
 	@Autowired
 	private TaskSev taskSev;
+	
+	private static Map<String, String> sortTypes = Maps.newLinkedHashMap();
+	static {
+		sortTypes.put("auto", "自动");
+		sortTypes.put("taskName", "名称");
+	}
 
 	/**
 	 * 查询列表
@@ -33,11 +45,18 @@ public class BsTaskCol {
 	@RequestMapping(method = RequestMethod.GET)
 	public String list(
 			@RequestParam(value = "page", defaultValue = "1") int pageNumber,
-			@RequestParam(value = "pager.size", defaultValue = "10") int pageSize,
-			Model model) {
+			@RequestParam(value = "pager.size", defaultValue = "2") int pageSize,
+			@RequestParam(value = "sortType", defaultValue = "auto") String sortType,
+			Model model, ServletRequest request, String search_LIKE_taskName) {
 
-		Page<Task> tasks = taskSev.list(pageNumber, pageSize, "");
+		Map<String, Object> searchParams = Servlets.getParametersStartingWith(request, "search_");
+		
+//		Page<Task> tasks = taskSev.list(pageNumber, pageSize, "");
+		Page<Task> tasks = taskSev.list(pageNumber, pageSize, searchParams, sortType);
 		model.addAttribute("tasks", tasks);
+		model.addAttribute("sortTypes", sortTypes);
+		// 将搜索条件编码成字符串，用于排序，分页的URL
+		model.addAttribute("searchParams", Servlets.encodeParameterStringWithPrefix(searchParams, "search_"));
 		return "bootstrap/task/taskList";
 	}
 

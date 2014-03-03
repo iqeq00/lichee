@@ -13,6 +13,29 @@
 	<c:if test="${not empty message}">
 		<div id="message" class="alert alert-success"><button data-dismiss="alert" class="close">×</button>${message}</div>
 	</c:if>
+
+<!-- 
+	<div class="clearfix">
+		<div class="input-append input-prepend">
+			<input type="text" placeholder="Search" class="placeholder"/>
+			<span class="add-on">
+				<i class="icon-search"></i>
+			</span> 
+		</div>
+	</div>
+-->	
+
+	<div class="row">
+		<div class="span4 offset7">
+			<form class="form-search" action="#">
+				<label>名称：</label> 
+				<input type="text" name="search_LIKE_taskName" class="input-medium" value="${param.search_LIKE_taskName}"/> 
+				<button type="submit" class="btn" id="search_btn">Search</button>
+		    </form>
+	    </div>
+	    <tags:sort/>
+	</div>
+
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
 		<thead><tr><th>名称</th><th>操作</th></tr></thead>
 		<tbody>
