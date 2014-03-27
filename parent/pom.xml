@@ -32,6 +32,7 @@
 		<jdk.version>1.6</jdk.version>
 	</properties>
 	
+	<!-- 这里配置后，子模块无需配置 -->
 	<distributionManagement>
 		<repository>
 			<id>nexus-releases</id>
