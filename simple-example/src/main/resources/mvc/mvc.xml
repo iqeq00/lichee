@@ -8,7 +8,8 @@
 		http://www.springframework.org/schema/beans 
 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 		http://www.springframework.org/schema/context 
-		http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd"
+		default-lazy-init="true">
         
     <!-- 自动扫描且只扫描@Controller -->
 	<context:component-scan base-package="org.lichee.simple.example" use-default-filters="false">
@@ -22,9 +23,20 @@
 			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
 		    	<constructor-arg value="UTF-8" />
 			</bean>
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">  
+            	<property name="objectMapper">
+            		<bean class="com.fasterxml.jackson.databind.ObjectMapper">  
+        				<property name="dateFormat">  
+            				<bean class="java.text.SimpleDateFormat">  
+                				<constructor-arg value="yyyy-MM-dd HH:mm:ss" />   
+            				</bean>  
+        				</property>  
+    				</bean> 
+            	</property>  
+        	</bean>
   		</mvc:message-converters>
 	</mvc:annotation-driven>
-        
+	
     <!-- 定义JSP文件的位置 --> 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/"/>
@@ -56,4 +68,24 @@
 		</mvc:interceptor>
 	</mvc:interceptors>
 	 -->
+	 
+	 <!-- 
+	 <mvc:annotation-driven conversion-service="conversionService" />
+
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"> 
+        <property name="registerDefaultFormatters" value="false" /> 
+        <property name="formatterRegistrars"> 
+            <set> 
+                <bean class="org.springframework.format.datetime.DateFormatterRegistrar"> 
+                    <property name="formatter" ref="dateFormatter"> 
+                    </property> 
+                </bean> 
+            </set> 
+        </property> 
+    </bean>
+
+    <bean id="dateFormatter" class="org.springframework.format.datetime.DateFormatter"> 
+        <property name="pattern" value="yyyy/MM/dd"></property> 
+    </bean>
+     -->
 </beans>

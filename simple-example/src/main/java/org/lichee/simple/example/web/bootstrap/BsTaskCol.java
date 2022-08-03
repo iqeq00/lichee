@@ -1,5 +1,6 @@
 package org.lichee.simple.example.web.bootstrap;
 
+import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.ServletRequest;
@@ -45,15 +46,16 @@ public class BsTaskCol {
 	@RequestMapping(method = RequestMethod.GET)
 	public String list(
 			@RequestParam(value = "page", defaultValue = "1") int pageNumber,
-			@RequestParam(value = "pager.size", defaultValue = "2") int pageSize,
+			@RequestParam(value = "pager.size", defaultValue = "4") int pageSize,
 			@RequestParam(value = "sortType", defaultValue = "auto") String sortType,
-			Model model, ServletRequest request, String search_LIKE_taskName) {
+			Model model, ServletRequest request) {
 
 		Map<String, Object> searchParams = Servlets.getParametersStartingWith(request, "search_");
 		
 //		Page<Task> tasks = taskSev.list(pageNumber, pageSize, "");
 		Page<Task> tasks = taskSev.list(pageNumber, pageSize, searchParams, sortType);
 		model.addAttribute("tasks", tasks);
+		model.addAttribute("sortType", sortType);
 		model.addAttribute("sortTypes", sortTypes);
 		// 将搜索条件编码成字符串，用于排序，分页的URL
 		model.addAttribute("searchParams", Servlets.encodeParameterStringWithPrefix(searchParams, "search_"));
@@ -77,6 +79,7 @@ public class BsTaskCol {
 	@RequestMapping(value = "create", method = RequestMethod.POST)
 	public String create(@Valid Task task, RedirectAttributes redirectAttributes) {
 
+		task.setTaskCreateTime(new Date());
 		taskSev.save(task);
 		redirectAttributes.addFlashAttribute("message", "创建任务成功");
 		return "redirect:/bootstrap/task/";
@@ -98,6 +101,8 @@ public class BsTaskCol {
 	@RequestMapping(value = "update", method = RequestMethod.POST)
 	public String update(@Valid @ModelAttribute("task") Task task,
 			RedirectAttributes redirectAttributes) {
+		
+		task.setTaskUpdateTime(new Date());
 		taskSev.save(task);
 		redirectAttributes.addFlashAttribute("message", "更新任务成功");
 		return "redirect:/bootstrap/task/";

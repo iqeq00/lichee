@@ -14,6 +14,19 @@
 	<url>http://www.lichee.org</url>
 	<description>This is a project demo of lynch</description>
 	<inceptionYear>2013-2014</inceptionYear>
+	
+	<distributionManagement>
+		<repository>
+			<id>nexus-releases</id>
+			<name>Nexus Releases Repository</name>
+			<url>http://localhost:8888/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<name>Nexus Snapshots Repository</name>
+			<url>http://localhost:8888/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 	<developers>
 		<developer>

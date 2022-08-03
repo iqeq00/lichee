@@ -37,12 +37,22 @@
 	</div>
 
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
-		<thead><tr><th>名称</th><th>操作</th></tr></thead>
+		<thead>
+			<tr>
+				<th>名称</th>
+				<th>描述</th>
+				<th>创建时间</th>
+				<th>修改时间</th>
+				<th>操作</th>
+			</tr>
+		</thead>
 		<tbody>
 			<c:forEach items="${tasks.content}" var="task">
 				<tr>
 					<td>${task.taskName}</td>
 					<td>${task.taskDesc}</td>
+					<td>${task.taskCreateTime}</td>
+					<td>${task.taskUpdateTime}</td>
 					<td>
 						<a href="${ctx}/bootstrap/task/update/${task.taskId}">修改</a>&nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;
 						<a href="${ctx}/bootstrap/task/delete/${task.taskId}">删除</a><br/>

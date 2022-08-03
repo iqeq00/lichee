@@ -2,17 +2,14 @@ package org.lichee.simple.example.entity;
 
 // Generated 2013-7-10 17:02:21 by Hibernate Tools 3.4.0.CR1
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-
 import static javax.persistence.GenerationType.IDENTITY;
 
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -25,16 +22,21 @@ public class Task implements java.io.Serializable {
 	private Integer taskId;
 	private String taskName;
 	private String taskDesc;
+	private Date taskCreateTime;
+	private Date taskUpdateTime;
 
 	// private TestClass testClass;
 
 	public Task() {
 	}
-
-	public Task(Integer taskId, String taskName, String taskDesc) {
+	
+	public Task(Integer taskId, String taskName, String taskDesc,
+			Date taskCreateTime, Date taskUpdateTime) {
 		this.taskId = taskId;
 		this.taskName = taskName;
 		this.taskDesc = taskDesc;
+		this.taskCreateTime = taskCreateTime;
+		this.taskUpdateTime = taskUpdateTime;
 	}
 
 	@Id
@@ -65,6 +67,26 @@ public class Task implements java.io.Serializable {
 	public void setTaskDesc(String taskDesc) {
 		this.taskDesc = taskDesc;
 	}
+
+	@Column(name = "task_create_time", nullable = false, length = 19)
+	public Date getTaskCreateTime() {
+		return taskCreateTime;
+	}
+
+	public void setTaskCreateTime(Date taskCreateTime) {
+		this.taskCreateTime = taskCreateTime;
+	}
+
+	@Column(name = "task_update_time", length = 19)
+	public Date getTaskUpdateTime() {
+		return taskUpdateTime;
+	}
+
+	public void setTaskUpdateTime(Date taskUpdateTime) {
+		this.taskUpdateTime = taskUpdateTime;
+	}
+	
+	
 	
 	// @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE})
 	// @JoinColumn(name = "test_class", nullable = false)

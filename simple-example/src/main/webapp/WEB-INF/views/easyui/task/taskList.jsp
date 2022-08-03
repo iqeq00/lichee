@@ -42,6 +42,16 @@
 					field : 'taskDesc',
 					width : 150,
 					sortable : true
+				},	{
+					title : '任务开始时间',
+					field : 'taskCreateTime',
+					width : 150,
+					sortable : true
+				},	{
+					title : '任务修改时间',
+					field : 'taskUpdateTime',
+					width : 150,
+					sortable : true
 				},  {
 					field : 'action',
 					title : '操作',

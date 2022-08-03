@@ -32,4 +32,5 @@
 		<%@ include file="/WEB-INF/layouts/sitemesh/footer.jsp"%>
 	</div>
 </body>
+
 </html>
